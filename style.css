@@ -3,7 +3,19 @@
 	margin: 0;
 	padding: 0;
 }
-
+:root{
+    --gradient: linear-gradient(45deg,
+    #E8FD02,
+    #02E8FD,
+    #FD02E8); 
+    --bg-color: hsl(323 21% 16%);
+    --clr-neon: hsl(317 100% 54%);
+    --clr-black: #333;
+    --clr-white: #f5f5f5;
+    --clr-purple: #6e5494;
+    --clr-4: #2d8f85;
+    --clr-5: #637c54;
+}
 .controlPanel{
     height: 660px;
     width: 300px;
