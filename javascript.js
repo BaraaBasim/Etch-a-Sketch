@@ -4,7 +4,7 @@ console.log(container.style.width);
 
 
 
-container.style.gridTemplateColumns = `repeat(${Math.sqrt(boxCount)},1fr`;
+container.style.gridTemplateColumns = `repeat(${Math.sqrt(boxCount)}, 1fr`;
 container.style.gridTemplateRows = `repeat(${Math.sqrt(boxCount)}, 1fr`;
 
 for (let i = 0; i < boxCount; i++) {
@@ -15,11 +15,12 @@ for (let i = 0; i < boxCount; i++) {
   container.appendChild(div);
 }
 
-
-let gridboxes = document.querySelectorAll('.gridBox')
-gridboxes.forEach(gridBox => {
-  gridBox.addEventListener('mousedown', (e) => {
+function paintBlack(e){
     e.target.style.backgroundColor = 'black';
-  })
+}
+
+let gridBoxes = document.querySelectorAll('.gridBox')
+gridBoxes.forEach(gridBox => {
+  gridBox.addEventListener('mousedown', paintBlack)
   
 });
