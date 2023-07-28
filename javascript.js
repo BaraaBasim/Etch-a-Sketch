@@ -1,5 +1,5 @@
 const container = document.getElementById("gridContainer");
-let boxCount = 100;
+let boxCount = 30 * 30;
 
 // Update the grid size according to the range slider
 let range = document.getElementById("myRange");
@@ -8,10 +8,17 @@ range.addEventListener('click', function(e) {
   while (container.firstChild) {
     container.removeChild(container.lastChild);
   }
+  updateRangeSliderPara(boxCount)
   createGrid(boxCount)
   assignEventListeners()
 })
 
+
+
+function updateRangeSliderPara(boxCount){
+  const p = document.querySelector('.sliderPara');
+  p.textContent = `${Math.sqrt(boxCount)} x ${Math.sqrt(boxCount)}`
+}
 
 function createGrid(count) {
   container.style.gridTemplateColumns = `repeat(${Math.sqrt(count)}, 1fr`;

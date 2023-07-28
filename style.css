@@ -25,7 +25,7 @@
 .controlPanel{
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     height: 660px;
     width: 300px;
@@ -40,6 +40,15 @@
     align-items: center;
 }
 
+.controlPanel button {
+    width: 70%;
+    min-height: 3em;
+    border-radius: 5px;
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 2em;
+    margin-top: 3em;
+    
+}
 
 body {
 
@@ -107,5 +116,5 @@ body {
 }
 
 .gridBox {
-    border: 1px solid black;
+    border: 1px solid rgba(0, 0, 0, 0.288);
 }
