@@ -47,12 +47,8 @@ body {
 }
 
 .gridContainer{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    row-gap: 0;
-    gap: 0;
+    display: grid;
+
     width: 660px;
     height: 660px;
     background-color: white;
@@ -60,6 +56,5 @@ body {
 }
 
 .gridBox {
-    flex: 0 1 auto;
     border: 1px solid black;
 }
