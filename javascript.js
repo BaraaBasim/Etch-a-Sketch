@@ -1,26 +1,26 @@
 const container = document.getElementById("gridContainer");
-let boxCount = 8 * 8;
+let boxCount = 100 * 100;
 console.log(container.style.width);
 
 
-
-container.style.gridTemplateColumns = `repeat(${Math.sqrt(boxCount)}, 1fr`;
-container.style.gridTemplateRows = `repeat(${Math.sqrt(boxCount)}, 1fr`;
-
-for (let i = 0; i < boxCount; i++) {
-  const div = document.createElement("div");
-  console.log(div.style.width);
-  console.log(div.style.height);
-  div.classList.add("gridBox");
-  container.appendChild(div);
+function createGrid(count) {
+  container.style.gridTemplateColumns = `repeat(${Math.sqrt(count)}, 1fr`;
+  container.style.gridTemplateRows = `repeat(${Math.sqrt(count)}, 1fr`;
+  
+  for (let i = 0; i < count; i++) {
+    const div = document.createElement("div");
+    div.classList.add("gridBox");
+    container.appendChild(div);
+  }
 }
 
+createGrid(boxCount)
+
 function paintBlack(e){
-    e.target.style.backgroundColor = 'black';
+    e.target.classList.add('black');
 }
 
 let gridBoxes = document.querySelectorAll('.gridBox')
 gridBoxes.forEach(gridBox => {
-  gridBox.addEventListener('mousedown', paintBlack)
-  
+  gridBox.addEventListener('mouseover', paintBlack)
 });

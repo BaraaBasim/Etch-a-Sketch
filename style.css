@@ -39,7 +39,9 @@ body {
     height: 100vh;
 }
 
-
+.black {
+    background-color: black;
+}
 .title {
     text-align: center;
     font-size: 2rem;
