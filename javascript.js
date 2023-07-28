@@ -1,6 +1,25 @@
 const container = document.getElementById("gridContainer");
-let boxCount = 100 * 100;
-console.log(container.style.width);
+let boxCount = 64;
+// let range = document.getElementById("myRange");
+// range.addEventListener('click', setBoxCount)
+// function setBoxCount(e){
+//   e.target.value = parseInt(range.getAttribute("value"));
+// }
+// let boxCount = document.addEventListener('click', setBoxCount);
+
+let range = document.getElementById("myRange");
+range.addEventListener('click', function(e) {
+  let boxCount = e.target.value;
+  while (container.firstChild) {
+    container.removeChild(container.lastChild);
+  }
+  createGrid(boxCount)
+})
+
+
+
+
+
 
 
 function createGrid(count) {
@@ -13,7 +32,6 @@ function createGrid(count) {
     container.appendChild(div);
   }
 }
-
 createGrid(boxCount)
 
 function paintBlack(e){

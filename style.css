@@ -38,6 +38,16 @@ body {
     align-items: center;
     height: 100vh;
 }
+.slidecontainer {
+    width: 100%; /* Width of the outside container */
+}
+  
+  .slider {
+
+    width: 100%; /* Full-width */
+    height: 25px; /* Specified height */
+
+  }
 
 .black {
     background-color: black;
