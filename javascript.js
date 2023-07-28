@@ -16,3 +16,10 @@ for (let i = 0; i < boxCount; i++) {
 }
 
 
+let gridboxes = document.querySelectorAll('.gridBox')
+gridboxes.forEach(gridBox => {
+  gridBox.addEventListener('mousedown', (e) => {
+    e.target.style.backgroundColor = 'black';
+  })
+  
+});
