@@ -14,6 +14,14 @@ range.addEventListener('click', function(e) {
 })
 
 
+function clearGrid(){
+  while (container.firstChild) {
+    container.removeChild(container.lastChild);
+  }
+}
+
+const clear = document.getElementById('clear')
+clear.addEventListener('click', clearGrid)
 
 function updateRangeSliderPara(boxCount){
   const p = document.querySelector('.sliderPara');
