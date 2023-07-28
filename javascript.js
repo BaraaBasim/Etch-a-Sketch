@@ -1,22 +1,17 @@
 const container = document.getElementById("gridContainer");
-let boxCount = 64;
-// let range = document.getElementById("myRange");
-// range.addEventListener('click', setBoxCount)
-// function setBoxCount(e){
-//   e.target.value = parseInt(range.getAttribute("value"));
-// }
-// let boxCount = document.addEventListener('click', setBoxCount);
+let boxCount = 16;
 
+
+
+// Update the grid size according to the range slider
 let range = document.getElementById("myRange");
 range.addEventListener('click', function(e) {
-  let boxCount = e.target.value;
+  let boxCount = e.target.value ** 2;
   while (container.firstChild) {
     container.removeChild(container.lastChild);
   }
   createGrid(boxCount)
 })
-
-
 
 
 
@@ -32,11 +27,13 @@ function createGrid(count) {
     container.appendChild(div);
   }
 }
+
 createGrid(boxCount)
 
 function paintBlack(e){
     e.target.classList.add('black');
 }
+
 
 let gridBoxes = document.querySelectorAll('.gridBox')
 gridBoxes.forEach(gridBox => {
