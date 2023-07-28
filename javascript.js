@@ -1,5 +1,5 @@
 const container = document.getElementById("gridContainer");
-let boxCount = 16;
+let boxCount = 100;
 
 // Update the grid size according to the range slider
 let range = document.getElementById("myRange");

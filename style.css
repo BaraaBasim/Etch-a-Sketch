@@ -48,6 +48,7 @@ body {
 .slidecontainer {
     margin-top: auto;
     text-align: center;
+    margin-bottom: 1em;
     width: 100%; /* Width of the outside container */
     color: var(--clr-white);
 }
@@ -70,9 +71,34 @@ body {
     color: var(--clr-white);
 }
 
+.footer {
+    position: fixed;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.233);
+    padding: 1em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: Arial, Helvetica, sans-serif;
+    gap: 10px;
+    width: 100%;
+    font-size: 20px;
+    font-weight: 500;
+    color: var(--clr-white);
+}
+
+.fa-github {
+    color: #ddd;
+    font-size: 24px;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .fa-github:hover {
+    transform: rotate(360deg) scale(1.2);
+  }
+
 .gridContainer{
     display: grid;
-
     width: 660px;
     height: 660px;
     background-color: white;
