@@ -11,13 +11,22 @@
     #FD02E8); 
     --bg-color: hsl(323 21% 16%);
     --clr-neon: hsl(317 100% 54%);
-    --clr-black: #333;
+    --clr-black: #202124;
     --clr-white: #f5f5f5;
     --clr-purple: #6e5494;
     --clr-4: #2d8f85;
     --clr-5: #637c54;
 }
+
+@font-face {
+    font-family: "specimen";
+    src: url('./media/PressStart2P-Regular.ttf');
+}
 .controlPanel{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     height: 660px;
     width: 300px;
     border: 1px solid black;
@@ -32,30 +41,33 @@
 
 
 body {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+
+    
+    background-color: var(--clr-black);
 }
 .slidecontainer {
+    margin-top: auto;
+    text-align: center;
     width: 100%; /* Width of the outside container */
+    color: var(--clr-white);
 }
-  
-  .slider {
 
-    width: 100%; /* Full-width */
+.slider {
     height: 25px; /* Specified height */
-
-  }
+    width: 50%; /* Full-width */
+}
 
 .black {
     background-color: black;
 }
 .title {
+    margin-top: 2em;
     text-align: center;
-    font-size: 2rem;
+    font-size: 3rem;
     margin-bottom: 2em;
+    font-family: "specimen";
+    font-weight: 800;
+    color: var(--clr-white);
 }
 
 .gridContainer{
@@ -64,7 +76,7 @@ body {
     width: 660px;
     height: 660px;
     background-color: white;
-    border: 1px solid black;
+    border: 7px solid #ddd;
 }
 
 .gridBox {
