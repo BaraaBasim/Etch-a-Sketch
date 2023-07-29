@@ -50,7 +50,7 @@ function createGrid(count) {
 createGrid(boxCount)
 assignEventListeners()
 function paintBlack(e){
-  e.target.style.backgroundColor = 'black';
+  e.target.style.backgroundColor = "rgba(0, 0, 0, 1.0)";
 }
 
 function random_rgba() {
@@ -65,8 +65,12 @@ function paintRainbow(e){
 }
 
 function paintShadow(e) {
-  let shadow = 0.0;
-  e.target.style.backgroundColor = 'rgba(0, 0, 0, ' + (shadow = shadow + 0.1) + ')';
+  let color = e.target.style.backgroundColor
+  let alpha = parseFloat(color.split(',')[3]);
+  if (alpha < 1.0){
+    color = 'rgba(255, 255, 255, ' + (alpha = alpha + 0.1) + ')';
+    e.target.style.backgroundColor = color
+  }
 }
 
 function assignEventListeners(){
