@@ -2,6 +2,7 @@ const container = document.getElementById("gridContainer");
 
 // this global variable gets updated by the getRangeSliderValue function 
 let boxCount = 30 * 30;
+let isShadow = false;
 let isRainbow = false;
 function getRangeSliderValue(e) {
   boxCount = e.target.value ** 2;
@@ -63,15 +64,26 @@ function paintRainbow(e){
   e.target.style.backgroundColor = color
 }
 
+function paintShadow(e) {
+  let shadow = 0.0;
+  e.target.style.backgroundColor = 'rgba(0, 0, 0, ' + (shadow = shadow + 0.1) + ')';
+}
+
 function assignEventListeners(){
   let gridBoxes = document.querySelectorAll('.gridBox')
   gridBoxes.forEach(gridBox => {
     if (isRainbow) {
+      gridBox.removeEventListener('mouseover', paintShadow)
+      gridBox.removeEventListener('mouseover', paintBlack)
       gridBox.addEventListener('mouseover', paintRainbow)
 
-    } else {
+    } else if (isShadow) {
       gridBox.removeEventListener('mouseover', paintRainbow)
-      
+      gridBox.removeEventListener('mouseover', paintBlack)
+      gridBox.addEventListener('mouseover', paintShadow)
+    } else {
+      gridBox.removeEventListener('mouseover', paintShadow)
+      gridBox.removeEventListener('mouseover', paintRainbow)
       gridBox.addEventListener('mouseover', paintBlack)
     }
   });
@@ -84,8 +96,20 @@ rainbowBtn.addEventListener('click', () => {
   if (isRainbow) {
     isRainbow = false
   } else {
+    isShadow = false
     isRainbow = true
   }
   
+  assignEventListeners()
+})
+
+const shadowBtn = document.getElementById("shadow");
+shadowBtn.addEventListener('click', () => {
+  if (isShadow) {
+    isShadow = false
+  } else {
+    isRainbow = false
+    isShadow = true
+  }
   assignEventListeners()
 })
