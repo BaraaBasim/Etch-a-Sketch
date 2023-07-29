@@ -2,7 +2,7 @@ const container = document.getElementById("gridContainer");
 
 // this global variable gets updated by the getRangeSliderValue function 
 let boxCount = 30 * 30;
-
+let isRainbow = false;
 function getRangeSliderValue(e) {
   boxCount = e.target.value ** 2;
   while (container.firstChild) {
@@ -49,12 +49,43 @@ function createGrid(count) {
 createGrid(boxCount)
 assignEventListeners()
 function paintBlack(e){
-  e.target.classList.add('black');
+  e.target.style.backgroundColor = 'black';
+}
+
+function random_rgba() {
+  var o = Math.round, r = Math.random, s = 255;
+  return 'rgba(' + o(r()*s) + ',' + o(r()*s) + ',' + o(r()*s) + ')';
+}
+
+function paintRainbow(e){
+  let color = random_rgba();
+  // set background color of element to rainbow
+  e.target.style.backgroundColor = color
 }
 
 function assignEventListeners(){
   let gridBoxes = document.querySelectorAll('.gridBox')
   gridBoxes.forEach(gridBox => {
-    gridBox.addEventListener('mouseover', paintBlack)
+    if (isRainbow) {
+      gridBox.addEventListener('mouseover', paintRainbow)
+
+    } else {
+      gridBox.removeEventListener('mouseover', paintRainbow)
+      
+      gridBox.addEventListener('mouseover', paintBlack)
+    }
   });
 }
+
+// toggle isRainbow
+// maybe there's a better way to do this using the toggle event property
+const rainbowBtn = document.getElementById("rainbow")
+rainbowBtn.addEventListener('click', () => {
+  if (isRainbow) {
+    isRainbow = false
+  } else {
+    isRainbow = true
+  }
+  
+  assignEventListeners()
+})
