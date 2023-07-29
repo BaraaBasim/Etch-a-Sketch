@@ -53,25 +53,44 @@ function paintBlack(e){
   e.target.style.backgroundColor = "rgba(0, 0, 0, 1.0)";
 }
 
-function random_rgba() {
+function random_rgb() {
   var o = Math.round, r = Math.random, s = 255;
-  return 'rgba(' + o(r()*s) + ',' + o(r()*s) + ',' + o(r()*s) + ')';
+  return 'rgb(' + o(r()*s) + ',' + o(r()*s) + ',' + o(r()*s) + ')';
 }
 
 function paintRainbow(e){
-  let color = random_rgba();
+  let color = random_rgb();
   // set background color of element to rainbow
   e.target.style.backgroundColor = color
 }
 
+// function paintShadow(e) {
+//   let style = window.getComputedStyle(e.target);
+//   let color = style.backgroundColor
+  
+//   let alpha = parseFloat(color.split(',')[3]);
+//   if (alpha < 1.0){
+//     color = 'rgba(0, 0, 0, ' + (alpha = alpha + 0.1) + ')';
+//     e.target.style.backgroundColor = color
+//   }
+// }
+
 function paintShadow(e) {
-  let color = e.target.style.backgroundColor
-  let alpha = parseFloat(color.split(',')[3]);
-  if (alpha < 1.0){
-    color = 'rgba(255, 255, 255, ' + (alpha = alpha + 0.1) + ')';
-    e.target.style.backgroundColor = color
+  let style = window.getComputedStyle(e.target);
+  let color = style.backgroundColor;
+  let alpha = 0.1;
+  if (color.startsWith('rgba')) {
+    alpha = parseFloat(color.split(',')[3]);
+  } else {
+    alpha = 0.1;
+  } 
+  if (alpha < 1.0) {
+    alpha += 0.1;
+    color = color.replace(/[\d\.]+\)$/g, alpha + ')');
+    e.target.style.backgroundColor = color;
   }
 }
+
 
 function assignEventListeners(){
   let gridBoxes = document.querySelectorAll('.gridBox')
