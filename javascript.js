@@ -53,13 +53,13 @@ function paintBlack(e){
   e.target.style.backgroundColor = "rgba(0, 0, 0, 1.0)";
 }
 
-function random_rgb() {
+function random_rgba() {
   var o = Math.round, r = Math.random, s = 255;
-  return 'rgb(' + o(r()*s) + ',' + o(r()*s) + ',' + o(r()*s) + ')';
+  return 'rgb(' + o(r()*s) + ',' + o(r()*s) + ',' + o(r()*s)+ ',' + r().toFixed(1) + ')';
 }
 
 function paintRainbow(e){
-  let color = random_rgb();
+  let color = random_rgba();
   // set background color of element to rainbow
   e.target.style.backgroundColor = color
 }
