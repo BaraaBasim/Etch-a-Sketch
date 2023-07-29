@@ -1,23 +1,30 @@
 const container = document.getElementById("gridContainer");
+
+// this global variable gets updated by the getRangeSliderValue function 
 let boxCount = 30 * 30;
 
-// Update the grid size according to the range slider
-let range = document.getElementById("myRange");
-range.addEventListener('click', function(e) {
-  let boxCount = e.target.value ** 2;
+function getRangeSliderValue(e) {
+  boxCount = e.target.value ** 2;
   while (container.firstChild) {
     container.removeChild(container.lastChild);
   }
   updateRangeSliderPara(boxCount)
   createGrid(boxCount)
   assignEventListeners()
-})
+  return boxCount
+}
+// Update the grid size according to the range slider
+let range = document.getElementById("myRange");
+range.addEventListener('click', getRangeSliderValue)
 
 
 function clearGrid(){
   while (container.firstChild) {
     container.removeChild(container.lastChild);
   }
+
+  createGrid(boxCount)
+  assignEventListeners()
 }
 
 const clear = document.getElementById('clear')
