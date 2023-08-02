@@ -11,7 +11,6 @@ function getRangeSliderValue(e) {
   }
   updateRangeSliderPara(boxCount);
   createGrid(boxCount);
-  assignEventListeners();
   return boxCount;
 }
 // Update the grid size according to the range slider
@@ -24,7 +23,6 @@ function clearGrid() {
   }
 
   createGrid(boxCount);
-  assignEventListeners();
 }
 
 const clear = document.getElementById("clear");
@@ -47,7 +45,6 @@ function createGrid(count) {
 }
 
 createGrid(boxCount);
-assignEventListeners();
 function paintBlack(e) {
   e.target.style.backgroundColor = "rgba(0, 0, 0, 1.0)";
 }
@@ -103,25 +100,37 @@ function paintShadow(e) {
 }
 
 // TODO: Event Delegation
+// function assignEventListeners() {
+//   let gridBoxes = document.querySelectorAll(".gridBox");
+//   gridBoxes.forEach((gridBox) => {
+//     if (isRainbow) {
+//       gridBox.removeEventListener("mouseover", paintShadow);
+//       gridBox.removeEventListener("mouseover", paintBlack);
+//       gridBox.addEventListener("mouseover", paintRainbow);
+//     } else if (isShadow) {
+//       gridBox.removeEventListener("mouseover", paintRainbow);
+//       gridBox.removeEventListener("mouseover", paintBlack);
+//       gridBox.addEventListener("mouseover", paintShadow);
+//     } else {
+//       gridBox.removeEventListener("mouseover", paintShadow);
+//       gridBox.removeEventListener("mouseover", paintRainbow);
+//       gridBox.addEventListener("mouseover", paintBlack);
+//     }
+//   });
+// }
 function assignEventListeners() {
-  let gridBoxes = document.querySelectorAll(".gridBox");
-  gridBoxes.forEach((gridBox) => {
+  let container = document.getElementById("gridContainer");
+  container.addEventListener("mouseover", (e) => {
+    if (!e.target.classList.contains("gridBox")) return;
     if (isRainbow) {
-      gridBox.removeEventListener("mouseover", paintShadow);
-      gridBox.removeEventListener("mouseover", paintBlack);
-      gridBox.addEventListener("mouseover", paintRainbow);
+      paintRainbow(e);
     } else if (isShadow) {
-      gridBox.removeEventListener("mouseover", paintRainbow);
-      gridBox.removeEventListener("mouseover", paintBlack);
-      gridBox.addEventListener("mouseover", paintShadow);
+      paintShadow(e);
     } else {
-      gridBox.removeEventListener("mouseover", paintShadow);
-      gridBox.removeEventListener("mouseover", paintRainbow);
-      gridBox.addEventListener("mouseover", paintBlack);
+      paintBlack(e);
     }
   });
 }
-
 // toggle isRainbow
 // maybe there's a better way to do this using the toggle event property
 const rainbowBtn = document.getElementById("rainbow");
@@ -132,8 +141,6 @@ rainbowBtn.addEventListener("click", () => {
     isShadow = false;
     isRainbow = true;
   }
-
-  assignEventListeners();
 });
 
 const shadowBtn = document.getElementById("shadow");
@@ -144,5 +151,30 @@ shadowBtn.addEventListener("click", () => {
     isRainbow = false;
     isShadow = true;
   }
-  assignEventListeners();
 });
+
+assignEventListeners();
+
+// const gameStatus = {
+//   status: 'black', // 'black' || 'shadow' || ''
+//   boxCount:
+// }
+
+// function init() {
+//   assignEventListeners()
+
+// }
+
+// function play() {
+//   gameStatus.status = ''
+// }
+
+// function destroy() {
+
+// }
+
+// export const etchGame = {
+//   init,
+//   play,
+//   destroy
+// }
